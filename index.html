@@ -6,10 +6,72 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MESTO</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
-
+<body class="page">
+  <header class="header">
+    <img src="./images/logo.svg" alt="Место" class="header__logo">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img src="./images/Avatar.png" alt="Аватарка" class="profile__avatar">
+      <div class="profile__profile-info">
+        <h1 class="profile__title">Жак-Ив Кусто</h1>
+        <p class="profile__subtitle">Исследователь океана</p>
+        <button class="profile__button-edit"><img src="./images/Vector.svg" alt="Редактирование"></button>
+      </div>
+      <button class="profile__add-button">+</button>
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img src="./images/karacharvsk.jpg" alt="Карачаевск" class="element__photo">
+        <div class="element__content">
+          <h2 class="element__title">Карачаевск</h2>
+          <input type="checkbox" class="element__like-button">
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__photo">
+        <div class="element__content">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <input type="checkbox" class="element__like-button">
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/dombai.png" alt="Домбай" class="element__photo">
+        <div class="element__content">
+          <h2 class="element__title">Домбай</h2>
+          <input type="checkbox" class="element__like-button">
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__photo">
+        <div class="element__content">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <input type="checkbox" class="element__like-button">
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/dombai.png" alt="Домбай" class="element__photo">
+        <div class="element__content">
+          <h2 class="element__title">Домбай</h2>
+          <input type="checkbox" class="element__like-button">
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/karacharvsk.jpg" alt="Карачаево-Черкесия" class="element__photo">
+        <div class="element__content">
+          <h2 class="element__title">Карачаево-Черкесия</h2>
+          <input type="checkbox" class="element__like-button">
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+  <script src="./style.css"></script>
 </body>
 
 </html>
