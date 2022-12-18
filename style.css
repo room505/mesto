@@ -1,8 +1,256 @@
+@import url(./fonts/inter.css);
+
+/* PAGE */
 .page {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
   max-width: 1280px;
   background: #000000;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+  color: white;
+  font-family: "Inter", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* HEADER */
+.header {
+  padding-top: 45px;
+  width: 68.75%;
+  border-bottom: 1px solid #545454;
+}
+
+.header__logo {
+  width: 142px;
+  height: 33px;
+  margin-bottom: 36px;
+}
+
+/* CONTENT */
+
+.content {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* PROFILE */
+.profile {
+  width: 68.75%;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 51px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile__card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.profile__avatar {
+  margin-right: 30px;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.profile__info {
+  min-width: 336px;
+  position: relative;
+}
+
+.profile__author {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: #ffffff;
+}
+
+.profile__about-the-author {
+  margin-top: 7px; /*ПРОВЕРИТЬ В ЧЕМ КОСЯК*/
+  margin-bottom: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.profile__button-edit {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #ffffff;
+  background: #000000;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.profile__button-edit:hover {
+  opacity: 0.7;
+}
+
+.profile__pen {
+  width: 10px;
+  height: 10px;
+}
+
+.profile__add-button {
+  width: 150px;
+  height: 50px;
+  border: 1px solid #ffffff;
+  background: #000000;
+  cursor: pointer;
+}
+
+.profile__plus {
+  width: 22px;
+  height: 22px;
+}
+
+/*ELEMENTS*/
+.elements {
+  width: 68.75%;
+  margin: 0 auto;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px 17px;
+}
+
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 282px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.element__content {
+  margin: 25px auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 87.23404255319149%;
+}
+
+.element__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.element__like {
+  background-image: url(./images/like.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border: 0;
+  width: 22px;
+  height: 19px;
+  transition: all 0.3s linear;
+}
+
+.element__like_active {
+  background-image: url(./images/like-active.svg);
+}
+
+.element__like:hover {
+  opacity: 0.7;
+}
+
+/*POPUP*/
+.popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup_hidden {
+  display: none;
+}
+
+.popup__container {
+  position: relative;
+  background-color: #ffffff;
+  width: 430px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.popup__rename-author {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px; /*ЭТО НАДО ИЗМЕНИТЬ*/
+}
+
+.popup__edit-about-the-author {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px; /*ЭТО НАДО ИЗМЕНИТЬ*/
+}
+
+.popup__close {
+  position: absolute;
+  right: -30px;
+  top: -30px;
 }
