@@ -20,53 +20,53 @@
         <div class="profile__info">
           <h1 class="profile__author">Жак-Ив Кусто</h1>
           <p class="profile__about-the-author">Исследователь океана</p>
-          <button class="profile__button-edit"><img src="./images/Vector.svg" alt="Редактирование"
+          <button class="button profile__button-edit"><img src="./images/Vector.svg" alt="Редактирование"
               class="profile__pen"></button>
         </div>
       </div>
-      <button class="profile__add-button"><img src="./images/edit-button.png" alt="Плюс" class="profile__plus"></button>
+      <button class="button profile__add-button"></button>
     </section>
     <section class="elements">
       <div class="element">
         <img src="./images/karacharvsk.jpg" alt="Карачаевск" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Карачаевск</h2>
-          <button disabled="disabled" class="element__like"></button>
+          <button disabled="disabled" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button disabled="disabled" class="element__like"></button>
+          <button disabled="disabled" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/dombai.png" alt="Домбай" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Домбай</h2>
-          <button disabled="disabled" class="element__like"></button>
+          <button disabled="disabled" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button disabled="disabled" class="element__like"></button>
+          <button disabled="disabled" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/dombai.png" alt="Домбай" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Домбай</h2>
-          <button disabled="disabled" class="element__like"></button>
+          <button disabled="disabled" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/karacharvsk.jpg" alt="Карачаево-Черкесия" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Карачаево-Черкесия</h2>
-          <button disabled="disabled" class="element__like"></button>
+          <button disabled="disabled" class="button element__like"></button>
         </div>
       </div>
     </section>
@@ -76,13 +76,13 @@
   </footer>
 
   <section class="popup popup_hidden">
-    <div class="popup__container">
+    <form class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <input type="text" class="popup__rename-author">
       <input type="text" class="popup__edit-about-the-author">
-      <button class="popup__save-edit" type="submit">Сохранить</button>
-      <button class="popup__close">X</button>
-    </div>
+      <button class="popup__save-edit button" type="submit">Сохранить</button>
+      <button class="button popup__close"></button>
+    </form>
   </section>
   <script src="./script.js"></script>
 </body>

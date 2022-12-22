@@ -1,3 +1,4 @@
+@import url(./normalize.css);
 @import url(./fonts/inter.css);
 
 /* PAGE */
@@ -99,11 +100,6 @@
   border: 1px solid #ffffff;
   background: #000000;
   cursor: pointer;
-  transition: all 0.3s linear;
-}
-
-.profile__button-edit:hover {
-  opacity: 0.7;
 }
 
 .profile__pen {
@@ -112,10 +108,14 @@
 }
 
 .profile__add-button {
+  background-image: url(./images/add-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
+  background-color: #000000;
   width: 150px;
   height: 50px;
   border: 1px solid #ffffff;
-  background: #000000;
   cursor: pointer;
 }
 
@@ -171,19 +171,15 @@
   background-image: url(./images/like.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   cursor: pointer;
   border: 0;
   width: 22px;
   height: 19px;
-  transition: all 0.3s linear;
 }
 
 .element__like_active {
   background-image: url(./images/like-active.svg);
-}
-
-.element__like:hover {
-  opacity: 0.7;
 }
 
 /*POPUP*/
@@ -205,16 +201,22 @@
 }
 
 .popup__container {
+  box-sizing: border-box;
+  margin-left: -17px;
+  margin-top: -217px;
   position: relative;
   background-color: #ffffff;
   width: 430px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  padding: 34px 36px 37px;
 }
 
 .popup__title {
+  margin-top: 0;
+  margin-bottom: 0;
   font-family: "Inter";
   font-style: normal;
   font-weight: 900;
@@ -230,10 +232,10 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-
+  margin-top: 40px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 10px; /*ЭТО НАДО ИЗМЕНИТЬ*/
+  padding: 0 0 13px;
 }
 
 .popup__edit-about-the-author {
@@ -243,14 +245,65 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-
+  margin-top: 30px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 10px; /*ЭТО НАДО ИЗМЕНИТЬ*/
+  padding: 0 0 13px;
+}
+
+.popup__save-edit {
+  margin-top: 48px;
+  align-items: center;
+  width: 358px;
+  height: 50px;
+  background: #000000;
+  border-radius: 2px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #ffffff;
 }
 
 .popup__close {
+  background-image: url(./images/Close-Icon.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #000000;
+  border-radius: 0;
+  height: 36px;
+  width: 36px;
   position: absolute;
-  right: -30px;
-  top: -30px;
+  right: -42px;
+  top: -42px;
+}
+
+/* FOOTER */
+.footer {
+  display: flex;
+  width: 68.75%;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 49px;
+}
+
+.footer__copyright {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+}
+
+.button {
+  transition: all 0.2s linear;
+}
+
+.button:hover {
+  opacity: 0.5;
 }

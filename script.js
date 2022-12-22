@@ -19,13 +19,21 @@ editButton.addEventListener("click", function openPop() {
   }
 });
 
-closePopup.addEventListener("click", function closePop() {
-  if (popup.classList.contains("popup_hidden") === false) {
-    popup.classList.add("popup_hidden");
-  } else {
-    console.log("не закрыто окно");
-  }
-});
+// function closePop(evt) {
+//   evt.preventDefault();
+//   if (popup.classList.contains("popup_hidden") === false) {
+//     popup.classList.add("popup_hidden");
+//   } else {
+//     console.log("не закрыто окно");
+//   }
+// }
+
+function closePop(evt) {
+  evt.preventDefault();
+  popup.classList.toggle("popup_hidden");
+}
+
+closePopup.addEventListener("click", closePop);
 
 renameAuthor.value = author.textContent;
 editAboutTheAuthor.value = aboutTheAutor.textContent;
@@ -34,6 +42,8 @@ function saveEditProfile(evt) {
   evt.preventDefault();
   author.textContent = renameAuthor.value;
   aboutTheAutor.textContent = editAboutTheAuthor.value;
+
+  popup.classList.toggle("popup_hidden");
 }
 
 saveEdit.addEventListener("click", saveEditProfile);
