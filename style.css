@@ -34,13 +34,13 @@
 /* CONTENT */
 
 .content {
-  width: 100%;
+  width: 68.75%;
   margin: 0 auto;
 }
 
 /* PROFILE */
 .profile {
-  width: 68.75%;
+  width: 100%;
   margin: 0 auto;
   padding-top: 40px;
   padding-bottom: 51px;
@@ -70,6 +70,7 @@
 }
 
 .profile__author {
+  max-width: 290px;
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Inter";
@@ -92,13 +93,17 @@
 }
 
 .profile__button-edit {
+  background-image: url(./images/pen.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  background-color: #000000;
   position: absolute;
   right: 0;
   top: 15px;
   width: 24px;
   height: 24px;
   border: 1px solid #ffffff;
-  background: #000000;
   cursor: pointer;
 }
 
@@ -126,11 +131,11 @@
 
 /*ELEMENTS*/
 .elements {
-  width: 68.75%;
+  width: 100%;
   margin: 0 auto;
   display: grid;
   grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 32.0455%);
   gap: 20px 17px;
 }
 
@@ -139,10 +144,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  max-width: 282px;
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.element__photo {
+  width: -webkit-fill-available;
 }
 
 .element__content {
@@ -154,6 +162,7 @@
 }
 
 .element__title {
+  width: 68.0851%;
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Inter";
@@ -171,15 +180,12 @@
   background-image: url(./images/like.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 22px;
+  background-color: rgba(255, 255, 255, 1);
   cursor: pointer;
   border: 0;
   width: 22px;
   height: 19px;
-}
-
-.element__like_active {
-  background-image: url(./images/like-active.svg);
 }
 
 /*POPUP*/
@@ -202,8 +208,10 @@
 
 .popup__container {
   box-sizing: border-box;
-  margin-left: -17px;
-  margin-top: -217px;
+  /* margin-left: -17px;
+  margin-top: -217px; */
+  top: -109px;
+  left: -8px;
   position: relative;
   background-color: #ffffff;
   width: 430px;
@@ -225,7 +233,7 @@
   color: #000000;
 }
 
-.popup__rename-author {
+/* .popup__rename-author {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -236,7 +244,36 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0 0 13px;
+  outline: none;
+} */
+
+.popup__rename-author {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin-top: 50px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 0 10px;
+  outline: none;
 }
+
+/* .popup__edit-about-the-author {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin-top: 30px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 0 13px;
+  outline: none;
+} */
 
 .popup__edit-about-the-author {
   font-family: "Inter";
@@ -248,13 +285,14 @@
   margin-top: 30px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 0 0 13px;
+  padding: 0 0 10px;
+  outline: none;
 }
 
 .popup__save-edit {
-  margin-top: 48px;
+  margin-top: 44px;
   align-items: center;
-  width: 358px;
+  width: 100%;
   height: 50px;
   background: #000000;
   border-radius: 2px;
@@ -301,9 +339,201 @@
 }
 
 .button {
+  padding: 0;
   transition: all 0.2s linear;
 }
 
 .button:hover {
   opacity: 0.5;
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
+
+  .header__logo {
+    margin-left: 20px;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .profile {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .profile__button-edit {
+    right: -26px;
+    top: 16px;
+  }
+
+  .profile__about-the-author {
+    margin-bottom: 20px;
+  }
+
+  .profile__info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile__card {
+    flex-direction: column;
+  }
+
+  .profile__avatar {
+    margin-right: 0;
+  }
+
+  .elements {
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 424px) {
+  .header {
+    padding-top: 0;
+  }
+
+  .popup {
+    top: 16px;
+  }
+
+  .popup__container {
+    width: 88.125%;
+    padding: 25px 22px;
+    margin-left: 0px;
+    margin-top: -258px;
+  }
+
+  .popup__save-edit {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .popup__close {
+    right: 0px;
+  }
+
+  .popup__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .popup__rename-author {
+    margin-top: 75px;
+  }
+
+  .popup__edit-about-the-author {
+    margin-top: 30px;
+  }
+
+  .popup__save-edit {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 45px;
+  }
+
+  .header__logo {
+    width: 103.74px;
+    height: 24.4px;
+    margin-bottom: 27px;
+    margin-top: 28px;
+    margin-left: 27px;
+  }
+
+  .profile {
+    padding-bottom: 36px;
+  }
+
+  .profile__author {
+    padding-top: 28px;
+  }
+
+  .profile__about-the-author {
+    padding-bottom: 33px;
+  }
+
+  .profile__add-button {
+    width: 282px;
+    height: 50px;
+  }
+
+  .profile__button-edit {
+    width: 18px;
+    height: 18px;
+    top: 36px;
+    right: 19px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .profile {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .profile__card {
+    flex-direction: column;
+    width: 88.125%;
+  }
+
+  .profile__info {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile__author {
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 33px;
+  }
+
+  .profile__about-the-author {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .profile__avatar {
+    margin-right: 0px;
+  }
+
+  .elements {
+    width: 100%;
+    justify-content: center;
+    grid-template-columns: repeat(1, 88.125%);
+    gap: 20px 0px;
+  }
+
+  .footer {
+    width: 100%;
+  }
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 17px;
+    margin-left: 19px;
+    margin-top: 1px;
+  }
 }
