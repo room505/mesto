@@ -348,11 +348,35 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .header {
+    width: 95%;
+  }
+
+  .element__title {
+    width: 85%;
+  }
+
+  .content {
+    width: 95%;
+  }
+
+  .footer {
+    width: 95%;
+  }
 }
 
 @media screen and (min-width: 425px) and (max-width: 768px) {
   .content {
     width: 100%;
+  }
+
+  .popup__container {
+    width: 360px;
+    left: 0;
+  }
+
+  .popup__close {
+    right: 0px;
   }
 
   .header__logo {
@@ -368,6 +392,10 @@
     width: 100%;
   }
 
+  .profile__author {
+    max-width: 100%;
+  }
+
   .profile__button-edit {
     right: -26px;
     top: 16px;
@@ -378,6 +406,7 @@
   }
 
   .profile__info {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
@@ -414,6 +443,8 @@
     padding: 25px 22px;
     margin-left: 0px;
     margin-top: -258px;
+    top: -5px;
+    left: 0px;
   }
 
   .popup__save-edit {
@@ -425,6 +456,9 @@
 
   .popup__close {
     right: 0px;
+    height: 20px;
+    width: 20px;
+    top: -39px;
   }
 
   .popup__title {
@@ -433,7 +467,7 @@
   }
 
   .popup__rename-author {
-    margin-top: 75px;
+    margin-top: 70px;
   }
 
   .popup__edit-about-the-author {
@@ -443,7 +477,7 @@
   .popup__save-edit {
     font-size: 14px;
     line-height: 17px;
-    margin-top: 45px;
+    margin-top: 40px;
   }
 
   .header__logo {
@@ -508,6 +542,7 @@
     font-weight: 500;
     font-size: 27px;
     line-height: 33px;
+    max-width: 100%;
   }
 
   .profile__about-the-author {
