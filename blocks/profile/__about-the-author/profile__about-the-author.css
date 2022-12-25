@@ -1,7 +1,7 @@
 .profile__about-the-author {
-  margin-top: 7px; /*ПРОВЕРИТЬ В ЧЕМ КОСЯК*/
+  margin-top: 7px;
   margin-bottom: 0;
-  font-family: "Inter";
+  font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
