@@ -19,15 +19,6 @@ editButton.addEventListener("click", function openPop() {
   }
 });
 
-// function closePop(evt) {
-//   evt.preventDefault();
-//   if (popup.classList.contains("popup_hidden") === false) {
-//     popup.classList.add("popup_hidden");
-//   } else {
-//     console.log("не закрыто окно");
-//   }
-// }
-
 function closePop(evt) {
   evt.preventDefault();
   popup.classList.toggle("popup_hidden");
