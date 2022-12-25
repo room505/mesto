@@ -20,52 +20,52 @@
         <div class="profile__info">
           <h1 class="profile__author">Жак-Ив Кусто</h1>
           <p class="profile__about-the-author">Исследователь океана</p>
-          <button class="button profile__button-edit"></button>
+          <button class="button profile__button-edit" type="button"></button>
         </div>
       </div>
-      <button class="button profile__add-button"></button>
+      <button class="button profile__add-button" type="button"></button>
     </section>
     <section class="elements">
       <div class="element">
         <img src="./images/karacharvsk.jpg" alt="Карачаевск" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Карачаевск</h2>
-          <button disabled="disabled" class="button element__like"></button>
+          <button type="button" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button disabled="disabled" class="button element__like"></button>
+          <button type="button" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/dombai.png" alt="Домбай" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Домбай</h2>
-          <button disabled="disabled" class="button element__like"></button>
+          <button type="button" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/elbrus.png" alt="Гора Эльбрус" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button disabled="disabled" class="button element__like"></button>
+          <button type="button" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/dombai.png" alt="Домбай" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Домбай</h2>
-          <button disabled="disabled" class="button element__like"></button>
+          <button type="button" class="button element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/karacharvsk.jpg" alt="Карачаево-Черкесия" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Карачаево-Черкесия</h2>
-          <button disabled="disabled" class="button element__like"></button>
+          <button type="button" class="button element__like"></button>
         </div>
       </div>
     </section>
@@ -74,16 +74,17 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_hidden">
-    <form class="popup__container">
+  <section class="popup">
+    <form class="popup__container" name="editProfile">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" class="popup__rename-author">
-      <input type="text" class="popup__edit-about-the-author">
+      <!-- РАНЕЕ popup__rename-author -->
+      <input type="text" class="popup__text-imput popup__text-imput_edit_author">
+      <input type="text" class="popup__text-imput popup__text-input_edit_about-the-author">
       <button class="popup__save-edit button" type="submit">Сохранить</button>
-      <button class="button popup__close"></button>
+      <button class="button popup__close" type="button"></button>
     </form>
   </section>
-  <script src="./script/script.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
