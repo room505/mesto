@@ -1,0 +1,8 @@
+.button {
+  padding: 0;
+  transition: all 0.2s linear;
+}
+
+.button:hover {
+  opacity: 0.5;
+}

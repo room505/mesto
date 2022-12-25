@@ -1,0 +1,25 @@
+.popup__save-edit {
+  margin-top: 44px;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: #000000;
+  border-radius: 2px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+@media screen and (min-width: 320px) and (max-width: 424px) {
+	.popup__save-edit {
+		font-size: 14px;
+		line-height: 17px;
+		margin-top: 40px;
+		width: 100%;
+	}
+}

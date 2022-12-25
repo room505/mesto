@@ -1,0 +1,20 @@
+.element__title {
+  width: 68.0851%;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .element__title {
+    width: 85%;
+  }
+}
