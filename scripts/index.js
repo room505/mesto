@@ -12,13 +12,13 @@ let editAboutTheAuthor = popup.querySelector(
 );
 
 function closePop() {
-  popup.classList.toggle("popup_hidden");
+  popup.classList.toggle("popup_open");
 }
 
 closePop();
 
 editButton.addEventListener("click", function openPop() {
-  popup.classList.remove("popup_hidden");
+  popup.classList.add("popup_open");
   renameAuthor.value = author.textContent;
   editAboutTheAuthor.value = aboutTheAutor.textContent;
 });

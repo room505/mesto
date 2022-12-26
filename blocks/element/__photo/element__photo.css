@@ -1,3 +1,4 @@
 .element__photo {
-  width: -webkit-fill-available;
+  width: 100%;
+  object-fit: contain;
 }
