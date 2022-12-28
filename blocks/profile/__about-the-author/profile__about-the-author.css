@@ -10,11 +10,23 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
+  width: 100%;
+
+  grid-area: profile__about-the-author;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__about-the-author {
+    justify-self: center;
+    align-self: end;
+    text-align: center;
+    padding-bottom: 33px;
+  }
 }
 
 @media screen and (max-width: 424px) {
   .profile__about-the-author {
-    padding-bottom: 33px;
     font-size: 14px;
     line-height: 17px;
   }

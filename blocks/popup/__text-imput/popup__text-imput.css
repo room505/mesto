@@ -10,12 +10,3 @@
   padding: 0 0 10px;
   outline: none;
 }
-
-@media screen and (max-width: 1024px) {
-}
-
-@media screen and (min-width: 425px) and (max-width: 768px) {
-}
-
-@media screen and (min-width: 320px) and (max-width: 424px) {
-}

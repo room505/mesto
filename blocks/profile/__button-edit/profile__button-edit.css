@@ -9,6 +9,9 @@
   border: 1px solid #ffffff;
   cursor: pointer;
   transition: all 0.2s linear;
+
+  align-self: center;
+  grid-area: profile__button-edit;
 }
 
 .profile__button-edit:hover {

@@ -1,17 +1,22 @@
 .profile__info {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
   max-width: 336px;
+  display: grid;
+  grid-template-columns: 1.9fr 0.1fr;
+  grid-template-rows: auto auto;
+  gap: 0px 19px;
+  grid-template-areas:
+    "profile__author profile__button-edit"
+    "profile__about-the-author profile__about-the-author";
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 768px) {
   .profile__info {
     padding-top: 28px;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-evenly;
+    max-width: 100%;
+    grid-template-columns: 0.3fr 2.4fr 0.3fr;
+    gap: 0px 10px;
+    grid-template-areas:
+      ". profile__author profile__button-edit"
+      "profile__about-the-author profile__about-the-author profile__about-the-author";
   }
 }

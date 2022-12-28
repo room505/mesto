@@ -11,6 +11,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
+  grid-area: profile__author;
 }
 
 @media screen and (max-width: 768px) {
@@ -22,7 +24,6 @@
 @media screen and (max-width: 424px) {
   .profile__author {
     font-size: 27px;
-    line-height: 33px;
-    padding-left: 31px;
+    line-height: 33px;  
   }
 }
