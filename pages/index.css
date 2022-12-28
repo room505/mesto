@@ -23,9 +23,9 @@
 @import url(../blocks/popup/_open/popup_open.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__text-imput/popup__text-imput.css);
-@import url(../blocks/popup/__text-imput/_edit_about-the-author/popup__text-imput_edit_about-the-author.css);
-@import url(../blocks/popup/__text-imput/_edit_author/popup__text-imput_edit_author.css);
+@import url(../blocks/popup/__text-input/popup__text-input.css);
+@import url(../blocks/popup/__text-input/_edit_about-the-author/popup__text-input_edit_about-the-author.css);
+@import url(../blocks/popup/__text-input/_edit_author/popup__text-input_edit_author.css);
 
 @import url(../blocks/popup/__save-edit/popup__save-edit.css);
 @import url(../blocks/popup/__title/popup__title.css);

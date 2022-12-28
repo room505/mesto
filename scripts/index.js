@@ -6,7 +6,7 @@ let popup = document.querySelector(".popup");
 let popupForm = document.querySelector(".popup__container");
 let closePopup = popup.querySelector(".popup__close");
 let saveEdit = popup.querySelector(".popup__save-edit");
-let renameAuthor = popup.querySelector(".popup__text-imput_edit_author");
+let renameAuthor = popup.querySelector(".popup__text-input_edit_author");
 let editAboutTheAuthor = popup.querySelector(
   ".popup__text-input_edit_about-the-author"
 );

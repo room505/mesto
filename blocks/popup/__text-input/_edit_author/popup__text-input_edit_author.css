@@ -1,9 +1,9 @@
-.popup__text-imput_edit_author {
+.popup__text-input_edit_author {
   margin-top: 48px;
 }
 
 @media screen and (max-width: 768px) {
-  .popup__text-imput_edit_author {
+  .popup__text-input_edit_author {
     margin-top: 75px;
   }
 }
