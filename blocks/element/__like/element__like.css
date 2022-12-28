@@ -3,9 +3,14 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent;
   cursor: pointer;
   border: 0;
   width: 22px;
   height: 19px;
+  transition: all 0.2s linear;
+}
+
+.element__like:hover {
+  opacity: 0.5;
 }

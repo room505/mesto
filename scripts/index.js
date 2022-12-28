@@ -12,10 +12,10 @@ let editAboutTheAuthor = popup.querySelector(
 );
 
 function closePop() {
-  popup.classList.toggle("popup_open");
+  popup.classList.remove("popup_open");
 }
 
-closePop();
+// closePop();
 
 editButton.addEventListener("click", function openPop() {
   popup.classList.add("popup_open");
