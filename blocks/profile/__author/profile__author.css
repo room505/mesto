@@ -18,12 +18,13 @@
 @media screen and (max-width: 768px) {
   .profile__author {
     max-width: 100%;
+    text-align: center;
   }
 }
 
 @media screen and (max-width: 424px) {
   .profile__author {
     font-size: 27px;
-    line-height: 33px;  
+    line-height: 33px;
   }
 }

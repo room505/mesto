@@ -15,13 +15,13 @@ function closePop() {
   popup.classList.remove("popup_open");
 }
 
-// closePop();
-
-editButton.addEventListener("click", function openPop() {
+function openPop() {
   popup.classList.add("popup_open");
   renameAuthor.value = author.textContent;
   editAboutTheAuthor.value = aboutTheAutor.textContent;
-});
+}
+
+editButton.addEventListener("click", openPop);
 
 closePopup.addEventListener("click", closePop);
 

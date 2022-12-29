@@ -9,4 +9,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0 0 10px;
   outline: none;
+  margin-bottom: 30px;
+}
+
+.popup__text-input:last-of-type {
+  margin-bottom: 0;
 }

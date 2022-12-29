@@ -75,12 +75,14 @@
   </footer>
 
   <section class="popup">
-    <form class="popup__container" name="editProfile">
+    <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" class="popup__text-input popup__text-input_edit_author">
-      <input type="text" class="popup__text-input popup__text-input_edit_about-the-author">
-      <button class="popup__save-edit" type="submit">Сохранить</button>
       <button class="popup__close" type="button"></button>
+      <form class="popup__form" name="editProfile">
+        <input type="text" class="popup__text-input popup__text-input_edit_author" name="editName">
+        <input type="text" class="popup__text-input popup__text-input_edit_about-the-author" name="editAboutTheAuthor">
+        <button class="popup__save-edit" type="submit">Сохранить</button>
+    </div>
     </form>
   </section>
   <script src="./scripts/index.js"></script>
