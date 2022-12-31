@@ -3,7 +3,7 @@ let aboutTheAutor = document.querySelector(".profile__about-the-author");
 let editButton = document.querySelector(".profile__button-edit");
 
 let popup = document.querySelector(".popup");
-let popupForm = document.querySelector(".popup__container");
+let popupForm = document.querySelector(".popup__form");
 let closePopup = popup.querySelector(".popup__close");
 let saveEdit = popup.querySelector(".popup__save-edit");
 let renameAuthor = popup.querySelector(".popup__text-input_edit_author");

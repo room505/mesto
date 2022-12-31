@@ -13,7 +13,7 @@
   .profile__info {
     padding-top: 28px;
     max-width: 100%;
-    grid-template-columns: 20px 1fr 20px;
+    grid-template-columns: 24px 1fr 24px;
     gap: 0px 10px;
     grid-template-areas:
       ". profile__author profile__button-edit"
