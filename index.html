@@ -26,7 +26,7 @@
       <button class="profile__add-button" type="button"></button>
     </section>
     <section class="elements">
-      <div class="element">
+      <!-- <div class="element">
         <img src="./images/karacharvsk.jpg" alt="Карачаевск" class="element__photo">
         <div class="element__content">
           <h2 class="element__title">Карачаевск</h2>
@@ -67,25 +67,53 @@
           <h2 class="element__title">Карачаево-Черкесия</h2>
           <button type="button" class="element__like"></button>
         </div>
-      </div>
+      </div> -->
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="popup">
+  <section class="popup popup_type_edit-profile">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <button class="popup__close" type="button"></button>
       <form class="popup__form" name="editProfile">
-        <input type="text" class="popup__text-input popup__text-input_edit_author" name="editName">
-        <input type="text" class="popup__text-input popup__text-input_edit_about-the-author" name="editAboutTheAuthor">
+        <input type="text" class="popup__text-input popup__text-input_edit_author" name="editName" required>
+        <input type="text" class="popup__text-input popup__text-input_edit_about-the-author" name="editAboutTheAuthor"
+          required>
         <button class="popup__save-edit" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
+  <section class="popup popup_type_add-card">
+    <div class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <button class="popup__close" type="button"></button>
+      <form class="popup__form" name="editProfile">
+        <input type="text" class="popup__text-input popup__text-input_title-card" name="titleCard"
+          placeholder="Название" required>
+        <input type="url" class="popup__text-input popup__text-input_photo-link" name="phootoLink"
+          placeholder="Ссылка на картинку" required>
+        <button class="popup__save-edit" type="submit">Создать</button>
+      </form>
+    </div>
+  </section>
+
+  <template class="template-element">
+
+    <div class="element">
+      <img src="#" alt="" class="element__photo">
+      <div class="element__content">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__like"></button>
+      </div>
+
+  </template>
+
+  <script src="./scripts/initialCards.js"></script>
   <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>

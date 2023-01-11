@@ -37,3 +37,7 @@
 
 @import url(../blocks/popup/__save-edit/popup__save-edit.css);
 @import url(../blocks/popup/__title/popup__title.css);
+
+/* пробный класс для контейнера попапа */
+
+@import url(../blocks/popup/_open-container/popup_open-container.css);
