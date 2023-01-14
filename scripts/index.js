@@ -43,7 +43,7 @@ popupEditForm.addEventListener("submit", saveEditProfile);
 
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const addButton = document.querySelector(".profile__add-button");
-const popupAddCardForm = popupAddCard.querySelector('.popup__form')
+const popupAddCardForm = popupAddCard.querySelector(".popup__form");
 const closeAddCardPopup = popupAddCard.querySelector(".popup__close");
 const addTittleCard = popupAddCard.querySelector(
   ".popup__text-input_title-card"
@@ -51,8 +51,8 @@ const addTittleCard = popupAddCard.querySelector(
 const addUrlPhoto = popupAddCard.querySelector(".popup__text-input_photo-link");
 
 function handleAddCardPopup() {
-  addTittleCard.value = '';
-  addUrlPhoto.value = '';
+  addTittleCard.value = "";
+  addUrlPhoto.value = "";
   openPopup(popupAddCard);
 }
 
@@ -71,27 +71,52 @@ popupAddCardForm.addEventListener("submit", saveAddPhoto);
 
 //==============================================================================================
 
-const templateElement = document.querySelector('.template-element').content;
+const templateElement = document.querySelector(".template-element").content;
 
-function createCard (dataCard) {
-  const newCard = templateElement.querySelector('.element').cloneNode(true);
-  const photoCard = newCard.querySelector('.element__photo')
-  const titleCard = newCard.querySelector('.element__title')
+function createCard(dataCard) {
+  const newCard = templateElement.querySelector(".element").cloneNode(true);
+  const photoCard = newCard.querySelector(".element__photo");
+  const titleCard = newCard.querySelector(".element__title");
   photoCard.src = dataCard.link;
   photoCard.alt = dataCard.name;
   titleCard.textContent = dataCard.name;
 
+  const deleteButton = newCard.querySelector(".element__delete-button");
+
+  const deleteCard = () => {
+    newCard.remove();
+  };
+
+  deleteButton.addEventListener("click", deleteCard);
+
   return newCard;
 }
 
-const containerElements = document.querySelector('.elements');
+const containerElements = document.querySelector(".elements");
 
-function renderArray () {
-  initialCards.forEach(dataCard => {
-  const newCard = createCard(dataCard);
+function renderArray() {
+  initialCards.forEach((dataCard) => {
+    const newCard = createCard(dataCard);
 
-  containerElements.prepend(newCard);
-  })
+    containerElements.prepend(newCard);
+  });
 }
+
+//ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
+
+const addNewCard = popupAddCard.querySelector(".popup__form");
+
+function submitAddNewCard(evt) {
+  evt.preventDefault();
+
+  const addValueCard = {
+    name: addTittleCard.value,
+    link: addUrlPhoto.value,
+  };
+  containerElements.prepend(createCard(addValueCard));
+  console.log("New title: " + addValueCard);
+}
+
+addNewCard.addEventListener("submit", submitAddNewCard);
 
 renderArray();

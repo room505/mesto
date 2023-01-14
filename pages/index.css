@@ -24,6 +24,7 @@
 @import url(../blocks/element/__content/element__content.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__delete-button/element__delete-button.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
@@ -37,7 +38,3 @@
 
 @import url(../blocks/popup/__save-edit/popup__save-edit.css);
 @import url(../blocks/popup/__title/popup__title.css);
-
-/* пробный класс для контейнера попапа */
-
-@import url(../blocks/popup/_open-container/popup_open-container.css);
