@@ -58,8 +58,6 @@ function handleAddCardPopup() {
 
 function saveAddPhoto(evt) {
   evt.preventDefault();
-  // author.textContent = renameAuthor.value;
-  // aboutTheAutor.textContent = editAboutTheAuthor.value;
   closePopup(popupAddCard);
 }
 
@@ -70,6 +68,24 @@ closeAddCardPopup.addEventListener("click", () => closePopup(popupAddCard));
 popupAddCardForm.addEventListener("submit", saveAddPhoto);
 
 //==============================================================================================
+
+const fullScreenCard = document.querySelector(".popup_full-screen");
+const fullScreenPhoto = fullScreenCard.querySelector(
+  ".popup__full-screen-photo"
+);
+const tittleForFullScreenPhoto = fullScreenCard.querySelector(
+  ".popup__title-for-photo"
+);
+
+const closeButtonFullScreenCard = fullScreenCard.querySelector(".popup__close");
+
+function closeFullScreenCard() {
+  closePopup(fullScreenCard);
+}
+
+closeButtonFullScreenCard.addEventListener("click", closeFullScreenCard);
+
+//=========================================================================
 
 const templateElement = document.querySelector(".template-element").content;
 
@@ -88,6 +104,18 @@ function createCard(dataCard) {
   };
 
   deleteButton.addEventListener("click", deleteCard);
+
+  const likeButton = newCard.querySelector(".element__like");
+  newCard.querySelector(".element__like").addEventListener("click", () => {
+    likeButton.classList.toggle("element__like_active");
+  });
+
+  newCard.querySelector(".element__photo").addEventListener("click", () => {
+    fullScreenPhoto.src = dataCard.link;
+    fullScreenCard.alt = dataCard.name;
+    tittleForFullScreenPhoto.textContent = dataCard.name;
+    openPopup(fullScreenCard);
+  });
 
   return newCard;
 }
