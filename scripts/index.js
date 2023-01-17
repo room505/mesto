@@ -79,11 +79,9 @@ const tittleForFullScreenPhoto = fullScreenCard.querySelector(
 
 const closeButtonFullScreenCard = fullScreenCard.querySelector(".popup__close");
 
-function closeFullScreenCard() {
-  closePopup(fullScreenCard);
-}
-
-closeButtonFullScreenCard.addEventListener("click", closeFullScreenCard);
+closeButtonFullScreenCard.addEventListener("click", () =>
+  closePopup(fullScreenCard)
+);
 
 //=========================================================================
 
