@@ -56,16 +56,9 @@ function handleAddCardPopup() {
   openPopup(popupAddCard);
 }
 
-function saveAddPhoto(evt) {
-  evt.preventDefault();
-  closePopup(popupAddCard);
-}
-
 addButton.addEventListener("click", handleAddCardPopup);
 
 closeAddCardPopup.addEventListener("click", () => closePopup(popupAddCard));
-
-popupAddCardForm.addEventListener("submit", saveAddPhoto);
 
 //=========================================================================
 
@@ -120,7 +113,7 @@ function createCard(dataCard) {
 
 const containerElements = document.querySelector(".elements");
 
-function renderArray() {
+function renderArrayInitialCards() {
   initialCards.forEach((dataCard) => {
     const newCard = createCard(dataCard);
 
@@ -130,8 +123,6 @@ function renderArray() {
 
 //ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
 
-const addNewCard = popupAddCard.querySelector(".popup__form");
-
 function submitAddNewCard(evt) {
   evt.preventDefault();
 
@@ -140,8 +131,9 @@ function submitAddNewCard(evt) {
     link: addUrlPhoto.value,
   };
   containerElements.prepend(createCard(addValueCard));
+  closePopup(popupAddCard);
 }
 
-addNewCard.addEventListener("submit", submitAddNewCard);
+popupAddCardForm.addEventListener("submit", submitAddNewCard);
 
-renderArray();
+renderArrayInitialCards();
