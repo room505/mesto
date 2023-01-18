@@ -16,7 +16,7 @@ function closePopup(popup) {
   popup.classList.remove("popup_open");
 }
 
-//Открытие поп
+//Открытие МОДАЛЬНОГО ОКНА
 function openPopup(popup) {
   popup.classList.add("popup_open");
 }
@@ -67,7 +67,7 @@ closeAddCardPopup.addEventListener("click", () => closePopup(popupAddCard));
 
 popupAddCardForm.addEventListener("submit", saveAddPhoto);
 
-//==============================================================================================
+//=========================================================================
 
 const fullScreenCard = document.querySelector(".popup_full-screen");
 const fullScreenPhoto = fullScreenCard.querySelector(
@@ -140,7 +140,6 @@ function submitAddNewCard(evt) {
     link: addUrlPhoto.value,
   };
   containerElements.prepend(createCard(addValueCard));
-  console.log("New title: " + addValueCard);
 }
 
 addNewCard.addEventListener("submit", submitAddNewCard);
