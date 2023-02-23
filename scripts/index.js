@@ -2,6 +2,7 @@ const author = document.querySelector(".profile__author");
 const aboutTheAutor = document.querySelector(".profile__about-the-author");
 const editButton = document.querySelector(".profile__button-edit");
 
+const allPopup = document.querySelector(".popup");
 const popupEdit = document.querySelector(".popup_type_edit-profile");
 const popupEditForm = popupEdit.querySelector(".popup__form");
 const closeProfilePopup = popupEdit.querySelector(".popup__close");
