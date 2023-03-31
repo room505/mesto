@@ -38,7 +38,7 @@
       <button class="popup__close" type="button"></button>
       <form class="popup__form" name="editProfile" novalidate>
         <label class="popup__filed">
-          <input type="text" class="popup__text-input popup__text-input_edit_author" name="editName" minlength="2"
+          <input type="text" class="popup__text-input popup__text-input_edit_author" name="name" minlength="2"
             maxlength="40" required id="name">
           <span class="popup__text-input-error name-error"></span>
         </label>
@@ -57,12 +57,12 @@
       <button class="popup__close" type="button"></button>
       <form class="popup__form" name="editProfile" novalidate>
         <label class="popup__filed">
-          <input type="text" class="popup__text-input popup__text-input_title-card" name="titleCard"
-            placeholder="Название" minlength="1" maxlength="30" required id="title">
+          <input type="text" class="popup__text-input popup__text-input_title-card" name="title" placeholder="Название"
+            minlength="1" maxlength="30" required id="title">
           <span class="popup__text-input-error title-error"></span>
         </label>
         <label class="popup__filed">
-          <input type="url" class="popup__text-input popup__text-input_photo-link" name="phootoLink"
+          <input type="url" class="popup__text-input popup__text-input_photo-link" name="link"
             placeholder="Ссылка на картинку" required id="link">
           <span class="popup__text-input-error link-error"></span>
         </label>
@@ -90,10 +90,10 @@
     </div>
 
   </template>
-
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/initialCards.js"></script>
   <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
+
 
 </body>
 

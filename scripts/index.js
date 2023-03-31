@@ -137,4 +137,22 @@ function submitAddNewCard(evt) {
 
 popupAddCardForm.addEventListener("submit", submitAddNewCard);
 
+const allInputsEditProfile = allPopup.querySelectorAll('.popup__text-input')
+
+const allInputsAddCards = popupAddCard.querySelectorAll('.popup__text-input')
+
+function closePopPressEscButton(arrayInputs){
+  arrayInputs.forEach(element => {
+    console.log(element);
+    element.addEventListener('keydown', (evt) => {
+      if(evt.key === "Escape"){
+        closePopup(evt)
+      }
+    })
+  })
+}
+
+closePopPressEscButton(allInputsEditProfile)
+closePopPressEscButton(allInputsAddCards)
+
 renderArrayInitialCards();

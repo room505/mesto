@@ -1,28 +1,41 @@
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("popup__text-input_type_error");
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__text-input-error_active");
+//*ПАРАМЕТРЫ СКРИПТА
+const parametersValidation = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__text-input",
+  submitButtonSelector: ".popup__save-edit",
+  inactiveButtonClass: "popup__save-edit_inactive",
+  inputErrorClass: "popup__text-input_type_error",
+  errorClass: "popup__text-input-error_active",
 };
 
+//*ПОКАЗАТЬ ОШИБКУ
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add(parametersValidation.inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(parametersValidation.errorClass);
+};
+
+//*СКРЫТЬ ОШИБКУ
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 };
 
+//*АКТИВАЦИЯ КНОПКИ СОХРАНИТЬ
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("popup__save-edit_inactive");
+    buttonElement.classList.add(parametersValidation.inactiveButtonClass);
   } else {
-    buttonElement.classList.remove("popup__save-edit_inactive");
+    buttonElement.classList.remove(parametersValidation.inactiveButtonClass);
   }
 };
-
+//*СКРЫТЬ ТЕКСТ ОШИБКИ
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("popup__text-input_type_error");
-  errorElement.classList.remove("popup__text-input-error_active");
+  inputElement.classList.remove(parametersValidation.inputErrorClass);
+  errorElement.classList.remove(parametersValidation.errorClass);
   errorElement.textContent = "";
 };
 
@@ -36,9 +49,11 @@ const checkInputValidity = (formElement, inputElement) => {
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(
-    formElement.querySelectorAll(".popup__text-input")
+    formElement.querySelectorAll(parametersValidation.inputSelector)
   );
-  const buttonElement = formElement.querySelector(".popup__save-edit");
+  const buttonElement = formElement.querySelector(
+    parametersValidation.submitButtonSelector
+  );
 
   toggleButtonState(inputList, buttonElement);
 
@@ -52,10 +67,13 @@ const setEventListeners = (formElement) => {
 };
 
 const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".popup__form"));
+  const formList = Array.from(
+    document.querySelectorAll(parametersValidation.formSelector)
+  );
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
+      setEventListeners(formElement);
     });
   });
 };
