@@ -2,7 +2,7 @@ const author = document.querySelector(".profile__author");
 const aboutTheAutor = document.querySelector(".profile__about-the-author");
 const editButton = document.querySelector(".profile__button-edit");
 
-const allPopup = document.querySelector(".popup");
+// const allPopup = document.querySelectorAll(".popup");
 const popupEdit = document.querySelector(".popup_type_edit-profile");
 const popupEditForm = popupEdit.querySelector(".popup__form");
 const closeProfilePopup = popupEdit.querySelector(".popup__close");
@@ -136,5 +136,25 @@ function submitAddNewCard(evt) {
 }
 
 popupAddCardForm.addEventListener("submit", submitAddNewCard);
+
+const closePopupIfPress = () => {
+  const popupList = Array.from(document.querySelectorAll(".popup"));
+
+  popupList.forEach((popupElement) => {
+    window.addEventListener("keydown", (evt) => {
+      if (evt.key === "Escape") {
+        closePopup(popupElement);
+        console.log("command on");
+      }
+    });
+    popupElement.addEventListener("click", (evt) => {
+      if (evt.target === popupElement) {
+        closePopup(popupElement);
+      }
+    });
+  });
+};
+
+closePopupIfPress();
 
 renderArrayInitialCards();

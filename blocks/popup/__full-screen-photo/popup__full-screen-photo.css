@@ -1,4 +1,5 @@
 .popup__full-screen-photo {
   max-height: 75vh;
   max-width: 75vw;
+  cursor: default;
 }

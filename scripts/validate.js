@@ -8,6 +8,12 @@ const parametersValidation = {
   errorClass: "popup__text-input-error_active",
 };
 
+//*formList - список форм
+//*formElement - форма из списка
+//*inputList - список полей формы
+//*inputElement - поле формы
+//*errorElement - текст ошибки поля формы
+
 //*ПОКАЗАТЬ ОШИБКУ
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -43,6 +49,23 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
+//*НЕКТИВНЫЙ ENTER
+const disabledEnterButton = (formElement) => {
+  const inputList = Array.from(
+    formElement.querySelectorAll(parametersValidation.inputSelector)
+  );
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("keydown", (evt) => {
+      if (!inputElement.validity.valid) {
+        if (evt.keyCode === 13) {
+          evt.preventDefault();
+          console.log("command om");
+        }
+      }
+    });
+  });
+};
+
 //*ПРОВЕРИТЬ ВАЛИДАЦИЮ
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
@@ -60,14 +83,16 @@ const setEventListeners = (formElement) => {
   const buttonElement = formElement.querySelector(
     parametersValidation.submitButtonSelector
   );
-
   toggleButtonState(inputList, buttonElement);
 
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
+  disabledEnterButton(formElement);
 
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", function (evt) {
+      checkInputValidity(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
+
+      disabledEnterButton(formElement);
     });
   });
 };
@@ -81,6 +106,7 @@ const enableValidation = () => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
+
     setEventListeners(formElement);
   });
 };
