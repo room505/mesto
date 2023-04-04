@@ -132,6 +132,7 @@ function submitAddNewCard(evt) {
     link: addUrlPhoto.value,
   };
   containerElements.prepend(createCard(addValueCard));
+
   closePopup(popupAddCard);
 }
 
@@ -141,13 +142,13 @@ const closePopupIfPress = () => {
   const popupList = Array.from(document.querySelectorAll(".popup"));
 
   popupList.forEach((popupElement) => {
-    window.addEventListener("keydown", (evt) => {
+    popupElement.addEventListener("keydown", (evt) => {
       if (evt.key === "Escape") {
         closePopup(popupElement);
         console.log("command on");
       }
     });
-    popupElement.addEventListener("click", (evt) => {
+    popupElement.addEventListener("mousedown", (evt) => {
       if (evt.target === popupElement) {
         closePopup(popupElement);
       }
