@@ -32,18 +32,43 @@ const setEventListeners = (
 ) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, rest);
 
-  disabledEnterButton(formElement);
+  disabledButton(buttonElement, rest);
+
+  disabledEnterButton(formElement, inputSelector);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function (evt) {
       checkInputValidity(formElement, inputElement, rest);
 
-      toggleButtonState(inputList, buttonElement);
+      if (hasInvalidInput(inputList)) {
+        disabledButton(buttonElement, rest);
+      } else {
+        enabledButton(buttonElement, rest);
+      }
 
-      disabledEnterButton(formElement);
+      disabledEnterButton(formElement, inputSelector);
     });
+  });
+};
+
+//*ПРОВЕРИТЬ ВАЛИДАЦИЮ
+const checkInputValidity = (formElement, inputElement, { ...rest }) => {
+  if (!inputElement.validity.valid) {
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      rest
+    );
+  } else {
+    hideInputError(formElement, inputElement, rest);
+  }
+};
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
   });
 };
 
@@ -72,45 +97,33 @@ const hideInputError = (
   errorElement.textContent = "";
 };
 
-//*ПРОВЕРИТЬ ВАЛИДАЦИЮ
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
+// //*АКТИВАЦИЯ КНОПКИ СОХРАНИТЬ
+// const toggleButtonState = (
+//   inputList,
+//   buttonElement,
+//   { inactiveButtonClass }
+// ) => {
+//   if (hasInvalidInput(inputList)) {
+//     buttonElement.classList.add(inactiveButtonClass);
+//     console.log("button inactive");
+//   } else {
+//     buttonElement.classList.remove(inactiveButtonClass);
+//     console.log("button active");
+//   }
+// };
+const enabledButton = (buttonElement, { inactiveButtonClass }) => {
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute("disabled");
 };
 
-//*Если все поля валидны — активировать кнопку, если хотя бы одно нет — заблокировать
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    //* Если поле не валидно, колбэк вернёт true
-    //* Обход массива прекратится и вся функция
-    //* hasInvalidInput вернёт true
-    return !inputElement.validity.valid;
-  });
-};
-
-//*АКТИВАЦИЯ КНОПКИ СОХРАНИТЬ
-const toggleButtonState = (
-  inputList,
-  buttonElement,
-  { inactiveButtonClass }
-) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    console.log("button inactive");
-  } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    console.log("button active");
-  }
+const disabledButton = (buttonElement, { inactiveButtonClass }) => {
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
 };
 
 //*НЕКТИВНЫЙ ENTER
-const disabledEnterButton = (formElement) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(validationConfig.inputSelector)
-  );
+const disabledEnterButton = (formElement, { inputSelector }) => {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("keydown", (evt) => {
       if (!inputElement.validity.valid) {

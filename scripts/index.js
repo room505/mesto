@@ -52,6 +52,10 @@ const addTittleCard = popupAddCard.querySelector(
 const addUrlPhoto = popupAddCard.querySelector(".popup__text-input_photo-link");
 
 function handleAddCardPopup() {
+  const submitButtonInForm = popupAddCard.querySelector(".popup__save-edit");
+  if (!submitButtonInForm.classList.contains("popup__save-edit_inactive")) {
+    submitButtonInForm.classList.add("popup__save-edit_inactive");
+  }
   addTittleCard.value = "";
   addUrlPhoto.value = "";
   openPopup(popupAddCard);
@@ -142,12 +146,6 @@ const closePopupIfPress = () => {
   const popupList = Array.from(document.querySelectorAll(".popup"));
 
   popupList.forEach((popupElement) => {
-    popupElement.addEventListener("keydown", (evt) => {
-      if (evt.key === "Escape") {
-        closePopup(popupElement);
-        console.log("command on");
-      }
-    });
     popupElement.addEventListener("mousedown", (evt) => {
       if (evt.target === popupElement) {
         closePopup(popupElement);
