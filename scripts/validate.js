@@ -1,19 +1,3 @@
-//*ПАРАМЕТРЫ СКРИПТА
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__text-input",
-  submitButtonSelector: ".popup__save-edit",
-  inactiveButtonClass: "popup__save-edit_inactive",
-  inputErrorClass: "popup__text-input_type_error",
-  errorClass: "popup__text-input-error_active",
-};
-
-//*formList - список форм
-//*formElement - форма из списка
-//*inputList - список полей формы
-//*inputElement - поле формы
-//*errorElement - текст ошибки поля формы
-
 //*ВКЛЮЧИТЬ ВАЛИДАЦИЮ
 const enableValidation = ({ formSelector, ...rest }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
@@ -97,20 +81,6 @@ const hideInputError = (
   errorElement.textContent = "";
 };
 
-// //*АКТИВАЦИЯ КНОПКИ СОХРАНИТЬ
-// const toggleButtonState = (
-//   inputList,
-//   buttonElement,
-//   { inactiveButtonClass }
-// ) => {
-//   if (hasInvalidInput(inputList)) {
-//     buttonElement.classList.add(inactiveButtonClass);
-//     console.log("button inactive");
-//   } else {
-//     buttonElement.classList.remove(inactiveButtonClass);
-//     console.log("button active");
-//   }
-// };
 const enabledButton = (buttonElement, { inactiveButtonClass }) => {
   buttonElement.classList.remove(inactiveButtonClass);
   buttonElement.removeAttribute("disabled");
@@ -135,5 +105,3 @@ const disabledEnterButton = (formElement, { inputSelector }) => {
     });
   });
 };
-
-enableValidation(validationConfig);

@@ -2,7 +2,6 @@ const author = document.querySelector(".profile__author");
 const aboutTheAutor = document.querySelector(".profile__about-the-author");
 const editButton = document.querySelector(".profile__button-edit");
 
-// const allPopup = document.querySelectorAll(".popup");
 const popupEdit = document.querySelector(".popup_type_edit-profile");
 const popupEditForm = popupEdit.querySelector(".popup__form");
 const closeProfilePopup = popupEdit.querySelector(".popup__close");
@@ -12,14 +11,47 @@ const editAboutTheAuthor = popupEdit.querySelector(
   ".popup__text-input_edit_about-the-author"
 );
 
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__text-input",
+  submitButtonSelector: ".popup__save-edit",
+  inactiveButtonClass: "popup__save-edit_inactive",
+  inputErrorClass: "popup__text-input_type_error",
+  errorClass: "popup__text-input-error_active",
+};
+
+const closePopupIfPress = (evt) => {
+  const popupList = Array.from(document.querySelectorAll(".popup_open"));
+
+  popupList.forEach((popupElement) => {
+    if (evt.target === popupElement) {
+      closePopup(popupElement);
+      console.log("au winning son?");
+    }
+  });
+};
+
+function closePopupEscapeButton(evt) {
+  if (evt.keyCode === 27) {
+    const popupList = Array.from(document.querySelectorAll(".popup_open"));
+    popupList.forEach((popupElement) => {
+      closePopup(popupElement);
+    });
+  }
+}
+
 //РЕДАКТИРОВАНИЕ ПРОФИЛЯ
 function closePopup(popup) {
   popup.classList.remove("popup_open");
+  popup.removeEventListener("mousedown", closePopupIfPress);
+  document.removeEventListener("keydown", closePopupEscapeButton);
 }
 
 //Открытие МОДАЛЬНОГО ОКНА
 function openPopup(popup) {
   popup.classList.add("popup_open");
+  popup.addEventListener("mousedown", closePopupIfPress);
+  document.addEventListener("keydown", closePopupEscapeButton);
 }
 
 //ОТКРЫТИЕ МОДАЛЬНОГО ОКНА + КОНТЕЙНЕРА
@@ -142,18 +174,5 @@ function submitAddNewCard(evt) {
 
 popupAddCardForm.addEventListener("submit", submitAddNewCard);
 
-const closePopupIfPress = () => {
-  const popupList = Array.from(document.querySelectorAll(".popup"));
-
-  popupList.forEach((popupElement) => {
-    popupElement.addEventListener("mousedown", (evt) => {
-      if (evt.target === popupElement) {
-        closePopup(popupElement);
-      }
-    });
-  });
-};
-
-closePopupIfPress();
-
 renderArrayInitialCards();
+enableValidation(validationConfig);
