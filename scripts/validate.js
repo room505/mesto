@@ -17,10 +17,6 @@ const setEventListeners = (
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
 
-  disabledButton(buttonElement, rest);
-
-  disabledEnterButton(formElement, inputSelector);
-
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function (evt) {
       checkInputValidity(formElement, inputElement, rest);
@@ -30,8 +26,6 @@ const setEventListeners = (
       } else {
         enabledButton(buttonElement, rest);
       }
-
-      disabledEnterButton(formElement, inputSelector);
     });
   });
 };
@@ -89,19 +83,4 @@ const enabledButton = (buttonElement, { inactiveButtonClass }) => {
 const disabledButton = (buttonElement, { inactiveButtonClass }) => {
   buttonElement.classList.add(inactiveButtonClass);
   buttonElement.setAttribute("disabled", true);
-};
-
-//*НЕКТИВНЫЙ ENTER
-const disabledEnterButton = (formElement, { inputSelector }) => {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("keydown", (evt) => {
-      if (!inputElement.validity.valid) {
-        if (evt.keyCode === 13) {
-          evt.preventDefault();
-          console.log("command om");
-        }
-      }
-    });
-  });
 };

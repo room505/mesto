@@ -21,22 +21,24 @@ const validationConfig = {
 };
 
 const closePopupIfPress = (evt) => {
-  const popupList = Array.from(document.querySelectorAll(".popup_open"));
-
-  popupList.forEach((popupElement) => {
-    if (evt.target === popupElement) {
-      closePopup(popupElement);
-      console.log("au winning son?");
+  Array.from(document.querySelectorAll(".popup_open")).forEach(
+    (popupElement) => {
+      if (evt.target === popupElement) {
+        closePopup(popupElement);
+        console.log("au winning son?");
+      }
     }
-  });
+  );
 };
 
 function closePopupEscapeButton(evt) {
-  if (evt.keyCode === 27) {
-    const popupList = Array.from(document.querySelectorAll(".popup_open"));
-    popupList.forEach((popupElement) => {
-      closePopup(popupElement);
-    });
+  if (evt.key === "Escape") {
+    Array.from(document.querySelectorAll(".popup_open")).forEach(
+      (popupElement) => {
+        closePopup(popupElement);
+        console.log("au winning son?");
+      }
+    );
   }
 }
 
@@ -49,6 +51,13 @@ function closePopup(popup) {
 
 //Открытие МОДАЛЬНОГО ОКНА
 function openPopup(popup) {
+  if (popup.querySelector(".popup__save-edit")) {
+    const submitButton = popup.querySelector(".popup__save-edit");
+    submitButton.setAttribute("disabled", true);
+    if (!submitButton.classList.contains("popup__save-edit_inactive")) {
+      submitButton.classList.add("popup__save-edit_inactive");
+    }
+  }
   popup.classList.add("popup_open");
   popup.addEventListener("mousedown", closePopupIfPress);
   document.addEventListener("keydown", closePopupEscapeButton);
@@ -84,10 +93,6 @@ const addTittleCard = popupAddCard.querySelector(
 const addUrlPhoto = popupAddCard.querySelector(".popup__text-input_photo-link");
 
 function handleAddCardPopup() {
-  const submitButtonInForm = popupAddCard.querySelector(".popup__save-edit");
-  if (!submitButtonInForm.classList.contains("popup__save-edit_inactive")) {
-    submitButtonInForm.classList.add("popup__save-edit_inactive");
-  }
   addTittleCard.value = "";
   addUrlPhoto.value = "";
   openPopup(popupAddCard);
