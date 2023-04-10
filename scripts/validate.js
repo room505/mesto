@@ -18,6 +18,8 @@ const setEventListeners = (
   const buttonElement = formElement.querySelector(submitButtonSelector);
 
   inputList.forEach((inputElement) => {
+    disabledButton(buttonElement, rest);
+
     inputElement.addEventListener("input", function (evt) {
       checkInputValidity(formElement, inputElement, rest);
 
@@ -26,6 +28,9 @@ const setEventListeners = (
       } else {
         enabledButton(buttonElement, rest);
       }
+    });
+    formElement.addEventListener("reset", () => {
+      disabledButton(buttonElement, rest);
     });
   });
 };

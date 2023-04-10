@@ -25,7 +25,6 @@ const closePopupIfPress = (evt) => {
     (popupElement) => {
       if (evt.target === popupElement) {
         closePopup(popupElement);
-        console.log("au winning son?");
       }
     }
   );
@@ -36,7 +35,6 @@ function closePopupEscapeButton(evt) {
     Array.from(document.querySelectorAll(".popup_open")).forEach(
       (popupElement) => {
         closePopup(popupElement);
-        console.log("au winning son?");
       }
     );
   }
@@ -51,13 +49,6 @@ function closePopup(popup) {
 
 //Открытие МОДАЛЬНОГО ОКНА
 function openPopup(popup) {
-  if (popup.querySelector(".popup__save-edit")) {
-    const submitButton = popup.querySelector(".popup__save-edit");
-    submitButton.setAttribute("disabled", true);
-    if (!submitButton.classList.contains("popup__save-edit_inactive")) {
-      submitButton.classList.add("popup__save-edit_inactive");
-    }
-  }
   popup.classList.add("popup_open");
   popup.addEventListener("mousedown", closePopupIfPress);
   document.addEventListener("keydown", closePopupEscapeButton);
@@ -75,6 +66,7 @@ function saveEditProfile(evt) {
   author.textContent = renameAuthor.value;
   aboutTheAutor.textContent = editAboutTheAuthor.value;
   closePopup(popupEdit);
+  popupEditForm.reset();
 }
 
 editButton.addEventListener("click", handleProfilePopup);
@@ -175,6 +167,7 @@ function submitAddNewCard(evt) {
   containerElements.prepend(createCard(addValueCard));
 
   closePopup(popupAddCard);
+  popupAddCardForm.reset();
 }
 
 popupAddCardForm.addEventListener("submit", submitAddNewCard);
