@@ -1,5 +1,5 @@
 //*ВКЛЮЧИТЬ ВАЛИДАЦИЮ
-const enableValidation = ({ formSelector, ...rest }) => {
+export const enableValidation = ({ formSelector, ...rest }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
