@@ -1,93 +1,90 @@
 export default class FormValidator {
   constructor(config, formElement) {
-    this._config = config;
-    this._formElement = formElement;
+    this._formSelector = config.formSelector;
+    this._inputSelector = config.inputSelector;
+    this._submitButtonSelector = config.submitButtonSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._errorClass = config.errorClass;
 
-    //*ПЕРЕПИСАТЬ
+    this._formElement = formElement;
     this._inputList = Array.from(
-      this._formElement.querySelectorAll(this._config.inputSelector)
+      this._formElement.querySelectorAll(this._inputSelector)
     );
     this._buttonElement = this._formElement.querySelector(
-      this._config.formSubmit
+      this._submitButtonSelector
     );
   }
 
-  //*ПРОВЕРИТЬ ВАЛИДАЦИЮ
-  _checkInputValidity(formElement, inputElement) {
-    if (!inputElement.validity.valid) {
-      this._showInputError(
-        formElement,
-        inputElement,
-        inputElement.validationMessage
-        // rest
-      );
-    } else {
-      this._hideInputError(formElement, inputElement);
-    }
-  }
-
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
-      return !inputElement.validity.valid;
+  enableValidation = () => {
+    this._formElement.addEventListener("submit", function (evt) {
+      evt.preventDefault();
     });
-  }
-
-  //*ПОКАЗАТЬ ОШИБКУ
-  _showInputError(formElement, inputElement, errorMessage) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add(inputErrorClass);
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add(errorClass);
-  }
-
-  //*СКРЫТЬ ТЕКСТ ОШИБКИ
-  _hideInputError(formElement, inputElement) {
-    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove(inputErrorClass);
-    errorElement.classList.remove(errorClass);
-    errorElement.textContent = "";
-  }
-
-  _enabledButton(buttonElement) {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.removeAttribute("disabled");
-  }
-
-  _disabledButton(buttonElement) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.setAttribute("disabled", true);
-  }
+    this._setEventListeners();
+  };
 
   //*УСТАНОВИТЬ СЛУШАТЕЛЬ
-  _setEventListeners(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-    const buttonElement = formElement.querySelector(submitButtonSelector);
+  _setEventListeners = () => {
+    this._disabledButton();
 
-    inputList.forEach((inputElement) => {
-      this._disabledButton(buttonElement);
-
-      inputElement.addEventListener("input", function (evt) {
-        this._checkInputValidity(formElement, inputElement);
-
-        if (this._hasInvalidInput(inputList)) {
-          this._disabledButton(buttonElement);
+    this._inputList.forEach((inputElement) => {
+      this._disabledButton();
+      inputElement.addEventListener("input", () => {
+        this._checkInputValidity(inputElement);
+        if (this._hasInvalidInput()) {
+          this._disabledButton();
         } else {
-          this._enabledButton(buttonElement);
+          this._enabledButton();
         }
-      });
-      formElement.addEventListener("reset", () => {
-        this._disabledButton(buttonElement);
+        this._formElement.addEventListener("reset", () => {
+          this._disabledButton();
+        });
       });
     });
-  }
+  };
 
-  enableValidation() {
-    // const formList = Array.from(document.querySelectorAll(formSelector));
-    // formList.forEach((formElement) => {
-    //   formElement.addEventListener("submit", function (evt) {
-    //     evt.preventDefault();
-    //   });
-    this._setEventListeners(formElement);
-    // });
-  }
+  //*ПРОВЕРИТЬ ВАЛИДАЦИЮ
+  _checkInputValidity = (inputElement) => {
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement, inputElement.validationMessage);
+    } else {
+      this._hideInputError(inputElement);
+    }
+  };
+
+  _hasInvalidInput = () => {
+    return this._inputList.some((inputElement) => {
+      return !inputElement.validity.valid;
+    });
+  };
+
+  //*ПОКАЗАТЬ ОШИБКУ
+  _showInputError = (inputElement, errorMessage) => {
+    const errorElement = this._formElement.querySelector(
+      `.${inputElement.id}-error`
+    );
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
+  };
+
+  //*СКРЫТЬ ТЕКСТ ОШИБКИ
+  _hideInputError = (inputElement) => {
+    const errorElement = this._formElement.querySelector(
+      `.${inputElement.id}-error`
+    );
+    inputElement.classList.remove(this._inputErrorClass);
+    errorElement.classList.remove(this._errorClass);
+    errorElement.textContent = "";
+  };
+
+  _enabledButton = () => {
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.removeAttribute("disabled");
+  };
+
+  _disabledButton = () => {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.setAttribute("disabled", true);
+  };
 }
