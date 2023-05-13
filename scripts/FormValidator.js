@@ -1,6 +1,5 @@
 export default class FormValidator {
   constructor(config, formElement) {
-    this._formSelector = config.formSelector;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
@@ -23,7 +22,7 @@ export default class FormValidator {
     this._setEventListeners();
   };
 
-  //*УСТАНОВИТЬ СЛУШАТЕЛЬ
+  //*УСТАНОВИТЬ СЛУШАТЕЛИ
   _setEventListeners = () => {
     this._disabledButton();
 
@@ -43,7 +42,7 @@ export default class FormValidator {
     });
   };
 
-  //*ПРОВЕРИТЬ ВАЛИДАЦИЮ
+  //*ПРОВЕРИТЬ ВАЛИДНОСТЬ
   _checkInputValidity = (inputElement) => {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
