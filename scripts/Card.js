@@ -1,21 +1,18 @@
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleOpenPopup) {
     //*Для обращения к массиву
     this._name = data.name;
     this._link = data.link;
-
-    //*Модальное окно для карточек
-    this._popup = document.querySelector(".popup_full-screen");
-    this._popupPhoto = this._popup.querySelector(".popup__full-screen-photo");
-    this._popupTitle = this._popup.querySelector(".popup__title-for-photo");
-    this._popupCloseBtn = this._popup.querySelector(".popup__close");
-
-    //*Методы для модального окна
-    this._escapeClose = this._handleEscClose.bind(this);
-    this._clickClose = this._handleClickToPopup.bind(this);
-
+    this._handleOpenPopup = handleOpenPopup;
     //*Темплейт
     this._templateSelector = templateSelector;
+
+    //*Сама карта
+    this._card = this._getTemplate();
+    this._image = this._card.querySelector(".element__photo");
+    this._title = this._card.querySelector(".element__title");
+    this._delete = this._card.querySelector(".element__delete-button");
+    this._like = this._card.querySelector(".element__like");
   }
 
   //*ПОЛУЧАЮ ТЕМПЛЕЙТ КАРТЫ
@@ -28,83 +25,30 @@ export default class Card {
     return cardElement;
   }
 
-  //*Метод установки слушателей закрытия модального окна
-  _openPopup() {
-    this._popup.classList.add("popup_open");
-    this._popup.addEventListener("click", this._clickClose);
-    this._popupCloseBtn.addEventListener("click", () => {
-      this._popup.classList.remove("popup_open");
-    });
-    document.addEventListener("keydown", this._escapeClose);
-  }
-
-  //*Метод закрытия модального окна + удаление слушателей
-  _closePopup() {
-    this._popup.classList.remove("popup_open");
-    this._popup.removeEventListener("click", this._clickClose);
-    document.removeEventListener("keydown", this._escapeClose);
-  }
-
-  //*Закрытие по нажатию Esc
-  _handleEscClose(evt) {
-    if (evt.key === "Escape") {
-      this._closePopup();
-    }
-  }
-
-  //*Закрытие по нажатию на модальное окно
-  _handleClickToPopup(evt) {
-    if (evt.target.classList.contains("popup_open")) {
-      this._closePopup();
-    }
-  }
-
-  //*Открытие модального окна
-  _handleOpenPopup() {
-    this._popupPhoto.src = this._link;
-    this._popupTitle.textContent = this._name;
-    this._openPopup();
-  }
-
   //*Удаление карточки
-  _handleDeleteButton() {
-    this._element.remove();
-  }
+  _handleDeleteButton = () => {
+    this._card.remove();
+  };
 
   //*Кнопка лайка
-  _handleLikeButton() {
-    this._element
-      .querySelector(".element__like")
-      .classList.toggle("element__like_active");
-  }
+  _handleLikeButton = () => {
+    this._like.classList.toggle("element__like_active");
+  };
 
   _setEventListeners() {
-    this._element
-      .querySelector(".element__delete-button")
-      .addEventListener("click", () => {
-        this._handleDeleteButton();
-      });
-
-    this._element
-      .querySelector(".element__like")
-      .addEventListener("click", () => {
-        this._handleLikeButton();
-      });
-
-    this._element
-      .querySelector(".element__photo")
-      .addEventListener("click", () => {
-        this._handleOpenPopup();
-      });
+    this._like.addEventListener("click", this._handleLikeButton);
+    this._delete.addEventListener("click", this._handleDeleteButton);
+    this._image.addEventListener("click", () => {
+      this._handleOpenPopup(this._link, this._name);
+    });
   }
 
   generateCard() {
-    this._element = this._getTemplate();
-
-    this._element.querySelector(".element__photo").src = this._link;
-    this._element.querySelector(".element__title").textContent = this._name;
+    this._image.src = this._link;
+    this._image.alt = this._name;
+    this._title.textContent = this._name;
 
     this._setEventListeners();
-    return this._element;
+    return this._card;
   }
 }
