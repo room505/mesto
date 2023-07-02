@@ -33,3 +33,9 @@ export const validationConfig = {
   inputErrorClass: "popup__text-input_type_error",
   errorClass: "popup__text-input-error_active",
 };
+
+export const cardListSelector = ".elements";
+export const cardTemplateSelector = ".template-element";
+export const popupSelectorWhitImg = ".popup_full-screen";
+
+
