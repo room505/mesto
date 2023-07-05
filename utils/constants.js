@@ -38,4 +38,7 @@ export const cardListSelector = ".elements";
 export const cardTemplateSelector = ".template-element";
 export const popupSelectorWhitImg = ".popup_full-screen";
 
-
+export const addCardButton = document.querySelector(".profile__add-button");
+export const editProfileButton = document.querySelector(
+  ".profile__button-edit"
+);
