@@ -34,6 +34,18 @@ export const validationConfig = {
   errorClass: "popup__text-input-error_active",
 };
 
+//*ФОРМЫ
+//*ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
+export const formEdit = document.querySelector(
+  ".popup__form_type_edit-profile"
+);
+//*ФОРМА ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
+export const formAddCard = document.querySelector(".popup__form_type_add-card");
+export const author = formEdit.querySelector(".popup__text-input_edit_author");
+export const aboutTheAuthor = formEdit.querySelector(
+  ".popup__text-input_edit_about-the-author"
+);
+
 export const cardListSelector = ".elements";
 export const cardTemplateSelector = ".template-element";
 export const popupSelectorWhitImg = ".popup_full-screen";

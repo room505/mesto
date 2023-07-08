@@ -1,4 +1,8 @@
 import {
+  formEdit,
+  formAddCard,
+  author,
+  aboutTheAuthor,
   initialCards,
   validationConfig,
   cardListSelector,
@@ -13,6 +17,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import "./index.css";
 
 //*ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ПРИ СОЗДАНИИ КАРТОЧКИ, ИСПОЛЬЗУЕТСЯ В КЛАССЕ "CARD"
 function handleOpenPopup(name, link) {
@@ -58,12 +63,6 @@ function handleAddFormSubmit(data) {
   popupAddImage.close();
 }
 
-//*ФОРМЫ
-//*ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
-const formEdit = document.querySelector(".popup__form_type_edit-profile");
-//*ФОРМА ДОБАВЛЕНИЯ НОВОЙ КАРТОЧКИ
-const formAddCard = document.querySelector(".popup__form_type_add-card");
-
 //*ПОДКЛЮЧЕНИЕ ВАЛИДАЦИИ, ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 const popupEditProfileValidator = new FormValidator(validationConfig, formEdit);
 popupEditProfileValidator.enableValidation();
@@ -94,11 +93,6 @@ popupAddImage.setEventListeners();
 addCardButton.addEventListener("click", () => {
   popupAddImage.open();
 });
-
-const author = formEdit.querySelector(".popup__text-input_edit_author");
-const aboutTheAuthor = formEdit.querySelector(
-  ".popup__text-input_edit_about-the-author"
-);
 
 //*СЛУШАТЕЛЬ НА КНОПКУ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА, ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 editProfileButton.addEventListener("click", () => {
