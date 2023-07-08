@@ -19,6 +19,30 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 
+function createCard(element) {
+  const card = new Card(element, cardTemplateSelector, handleOpenPopup);
+
+  const renderCards = card.generateCard();
+
+  return renderCards;
+}
+
+const cardList = new Section(
+  {
+    data: initialCards,
+    renderer: (element) => {
+      cardList.setItem(createCard(element));
+    },
+  },
+  cardListSelector
+);
+
+//*ФУНКЦИЯ ДЛЯ КНОПКИ SUBMIT, ИСПОЛЬЗУЕТСЯ В ФОРМЕ "formAddCard", ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
+function handleAddFormSubmit(data) {
+  cardList.setItem(createCard(data));
+  popupAddImage.close();
+}
+
 //*ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ПРИ СОЗДАНИИ КАРТОЧКИ, ИСПОЛЬЗУЕТСЯ В КЛАССЕ "CARD"
 function handleOpenPopup(name, link) {
   fullScreenCard.open(name, link);
@@ -37,30 +61,6 @@ function handleEditFormSubmit(data) {
     aboutTheAuthor: data["editAboutTheAuthor"],
   });
   popupEditProfile.close();
-}
-
-//*ФУНКЦИЯ ДЛЯ КНОПКИ SUBMIT, ИСПОЛЬЗУЕТСЯ В ФОРМЕ "formAddCard", ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
-function handleAddFormSubmit(data) {
-  const arrayFromNewCard = [data]; //*т.к. функция .renderItems() принимает на себя массив
-
-  const newCard = new Section(
-    {
-      data: arrayFromNewCard,
-      renderer: (item) => {
-        const newClassCard = new Card(
-          item,
-          cardTemplateSelector,
-          handleOpenPopup
-        );
-        const generateNewCard = newClassCard.generateCard();
-        newCard.setItem(generateNewCard);
-      },
-    },
-    cardListSelector
-  );
-
-  newCard.renderItems();
-  popupAddImage.close();
 }
 
 //*ПОДКЛЮЧЕНИЕ ВАЛИДАЦИИ, ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
@@ -107,16 +107,5 @@ const fullScreenCard = new PopupWithImage(popupSelectorWhitImg);
 fullScreenCard.setEventListeners();
 
 //*ОТРИСОВКА ЗАДАННЫХ КАРТОЧЕК "initialCards"
-const renderCard = new Section(
-  {
-    data: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, cardTemplateSelector, handleOpenPopup);
-      const renderCards = card.generateCard();
-      renderCard.setItem(renderCards);
-    },
-  },
-  cardListSelector
-);
 
-renderCard.renderItems();
+cardList.renderItems();
