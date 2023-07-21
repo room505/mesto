@@ -77,6 +77,16 @@
     </div>
   </section>
 
+  <section class="popup popup_delete-card">
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button class="popup__close" type="button"></button>
+      <form class="popup__form popup__form_delete-card" id="delete-card" name="delete-card" novalidate>
+        <button class="popup__save-edit" type="submit">Создать</button>
+      </form>
+    </div>
+  </section>
+
   <template class="template-element">
 
     <div class="element">
@@ -84,7 +94,10 @@
       <img src="#" alt="" class="element__photo">
       <div class="element__content">
         <h2 class="element__title"></h2>
-        <button type="button" class="element__like"></button>
+        <div class="element__like-container">
+          <button type="button" class="element__like"></button>
+          <p class="element__like-count">1</p>
+        </div>
       </div>
     </div>
 

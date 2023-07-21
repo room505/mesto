@@ -17,10 +17,69 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 import "./index.css";
 
+//*UserInfo
+const userInfo = new UserInfo({
+  authorSelector: ".profile__author",
+  aboutTheAuthorSelector: ".profile__about-the-author",
+  avatarSelector: ".profile__avatar",
+});
+
+const formDeleteCard = document.querySelector(".popup__form_delete-card");
+
+const api = new Api({
+  baseUrl: "https://nomoreparties.co/v1/cohort-71",
+  headers: {
+    authorization: "8c99eae8-3828-437f-8671-7867c2b90d9d",
+    "Content-Type": "application/json",
+  },
+});
+
+function handleLikeClick(cardId, changeLikeCounter, colorLike, isAddLike) {
+  if (isAddLike) {
+    api
+      .addLike(cardId)
+      .then((response) => {
+        changeLikeCounter(response.likes.length);
+        colorLike();
+      })
+      .catch((error) => console.log(`Ошибка: ${error}`));
+  } else {
+    api
+      .removeLike(cardId)
+      .then((response) => {
+        changeLikeCounter(response.likes.length);
+        colorLike();
+      })
+      .catch((error) => console.log(`Ошибка: ${error}`));
+  }
+}
+
+let currentUserId;
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then((response) => {
+    userInfo.setUserInfo({
+      link: response[0].avatar,
+      author: response[0].name,
+      aboutTheAuthor: response[0].about,
+    });
+    currentUserId = response[0]._id;
+    cardList.renderItems(response[0]);
+    console.log();
+  })
+  .catch((error) => console.log(`Ошибка: ${error}`));
+
 function createCard(element) {
-  const card = new Card(element, cardTemplateSelector, handleOpenPopup);
+  const card = new Card(
+    element,
+    cardTemplateSelector,
+    handleOpenPopup,
+    currentUserId,
+    handleLikeClick
+  );
 
   const renderCards = card.generateCard();
 
@@ -47,12 +106,6 @@ function handleAddFormSubmit(data) {
 function handleOpenPopup(name, link) {
   fullScreenCard.open(name, link);
 }
-
-//*UserInfo
-const userInfo = new UserInfo({
-  authorSelector: ".profile__author",
-  aboutTheAuthorSelector: ".profile__about-the-author",
-});
 
 //*ФУНКЦИЯ ДЛЯ КНОПКИ SUBMIT, ИСПОЛЬЗУЕТСЯ В ФОРМЕ "formEdit", РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПОЛЬЗОВАТЕЛЯ
 function handleEditFormSubmit(data) {
