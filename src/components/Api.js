@@ -20,11 +20,14 @@ export default class Api {
     }).then((res) => this._checkResponse(res));
   }
 
-  editUserInfo(name, about) {
+  editUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({ name, about }),
+      body: JSON.stringify({
+        name: data.name,
+        about: data.editAboutTheAuthor,
+      }),
     }).then((res) => this._checkResponse(res));
   }
 
@@ -44,11 +47,14 @@ export default class Api {
     }).then((res) => this._checkResponse(res));
   }
 
-  addNewCard(name, link) {
+  addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link,
+      }),
     }).then((res) => this._checkResponse(res));
   }
 
