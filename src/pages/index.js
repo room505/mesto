@@ -33,11 +33,7 @@ let userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userData]) => {
-    userInfo.setUserInfo({
-      link: userData.avatar,
-      author: userData.name,
-      aboutTheAuthor: userData.about,
-    });
+    userInfo.setUserInfo(userData);
     userId = userData._id;
     section.renderItems(initialCards);
   })
@@ -189,6 +185,35 @@ editProfileButton.addEventListener("click", () => {
   const data = userInfo.getUserInfo();
   author.value = data.author;
   aboutTheAuthor.value = data.aboutTheAuthor;
+});
+
+//*АВАТАР
+
+const avatar = document.querySelector(".profile__avatar");
+
+//* Создание попапа редактирования аватара пользователя
+const popupEditAvatar = new PopupWithForm({
+  popupSelector: ".popup_type_edit-avatar",
+  handleFormSubmit: (data) => {
+    popupEditAvatar.loading(true);
+    api
+      .editAvatar(data)
+      .then((data) => {
+        avatar.src = data.avatar;
+        popupEditAvatar.close();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        popupEditAvatar.loading(false);
+      });
+  },
+});
+popupEditAvatar.setEventListeners();
+
+avatar.addEventListener("click", () => {
+  popupEditAvatar.open();
 });
 
 //*ОТРИСОВКА ЗАДАННЫХ КАРТОЧЕК "initialCards"

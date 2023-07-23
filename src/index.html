@@ -16,6 +16,7 @@
     <section class="profile">
       <div class="profile__card">
         <img src="<%=require('../src/images/Avatar.png')%>" alt="Аватарка" class="profile__avatar">
+        <!-- <button class="profile__avatar-btn"></button> -->
         <div class="profile__info">
           <h1 class="profile__author"></h1>
           <button class="profile__button-edit" type="button"></button>
@@ -82,6 +83,21 @@
       <h2 class="popup__title">Вы уверены?</h2>
       <button class="popup__close" type="button"></button>
       <form class="popup__form popup__form_delete-card" id="delete-card" name="delete-card" novalidate>
+        <button class="popup__save-edit" type="submit">Да</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup popup_type_edit-avatar">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <button class="popup__close" type="button"></button>
+      <form class="popup__form popup__form_type_add-card" id="editAvatar" name="editAvatar" novalidate>
+        <label class="popup__filed">
+          <input type="url" class="popup__text-input popup__text-input_photo-link" name="avatar"
+            placeholder="Ссылка на картинку" required id="avatar">
+          <span class="popup__text-input-error avatar-error"></span>
+        </label>
         <button class="popup__save-edit" type="submit">Создать</button>
       </form>
     </div>

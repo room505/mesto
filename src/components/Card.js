@@ -23,7 +23,7 @@ export default class Card {
     this._like = this._card.querySelector(".element__like");
 
     //*ДЛЯ ПР9
-    this._handleDeleteCard = handleDeleteCardClick;
+    this._handleDeleteCardClick = handleDeleteCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteLikeClick = handleDeleteLikeClick;
     this._likesCount = this._card.querySelector(".element__like-count");
@@ -35,18 +35,18 @@ export default class Card {
 
   //*ПОЛУЧАЮ ТЕМПЛЕЙТ КАРТЫ
   _getTemplate() {
-    const cardElement = document
+    this._card = document
       .querySelector(this._templateSelector)
       .content.querySelector(".element")
       .cloneNode(true);
 
-    return cardElement;
+    return this._card;
   }
 
-  //*Удаление карточки
-  _handleDeleteButton = () => {
-    this._card.remove();
-  };
+  // //*Удаление карточки
+  // _handleDeleteButton = () => {
+  //   this._card.remove();
+  // };
 
   //*Кнопка лайка
   _handleLikeButton = () => {
@@ -66,13 +66,13 @@ export default class Card {
       }
     });
     this._delete.addEventListener("click", () => {
-      this._handleDeleteCard(this._handleDeleteButton, this._cardId);
+      this._handleDeleteCardClick(this._cardId);
     });
   }
   //* Удаление карточки
   deleteCard() {
-    this._element.remove();
-    this._element = null;
+    this._card.remove();
+    this._card = null;
   }
 
   //* проверяем владельца карточки

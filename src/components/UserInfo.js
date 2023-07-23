@@ -12,13 +12,9 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo({ author, aboutTheAuthor, link }) {
-    this._author.textContent = author;
-    this._aboutTheAuthor.textContent = aboutTheAuthor;
-    this.setAvatar(link);
-  }
-
-  setAvatar(link) {
-    this._avatar.src = link;
+  setUserInfo(data) {
+    this._author.textContent = data.name;
+    this._aboutTheAuthor.textContent = data.about;
+    this._avatar.src = data.avatar;
   }
 }
