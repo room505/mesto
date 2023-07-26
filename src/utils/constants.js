@@ -46,6 +46,11 @@ export const aboutTheAuthor = formEdit.querySelector(
   ".popup__text-input_edit_about-the-author"
 );
 
+//*НОВЫЙ АВАТАР
+export const editAvatar = document.querySelector(
+  ".popup__form_type_edit-avatar"
+);
+
 export const cardListSelector = ".elements";
 export const cardTemplateSelector = ".template-element";
 export const popupSelectorWhitImg = ".popup_full-screen";

@@ -15,8 +15,9 @@
   <main class="content">
     <section class="profile">
       <div class="profile__card">
-        <img src="<%=require('../src/images/Avatar.png')%>" alt="Аватарка" class="profile__avatar">
-        <!-- <button class="profile__avatar-btn"></button> -->
+        <button type="button" class="profile__avatar-button">
+          <img src="#" alt="Аватарка" class="profile__avatar">
+        </button>
         <div class="profile__info">
           <h1 class="profile__author"></h1>
           <button class="profile__button-edit" type="button"></button>
@@ -80,10 +81,10 @@
 
   <section class="popup popup_delete-card">
     <div class="popup__container">
-      <h2 class="popup__title">Вы уверены?</h2>
+      <h2 class="popup__title popup__title_delete">Вы уверены?</h2>
       <button class="popup__close" type="button"></button>
       <form class="popup__form popup__form_delete-card" id="delete-card" name="delete-card" novalidate>
-        <button class="popup__save-edit" type="submit">Да</button>
+        <button class="popup__save-edit popup__save-edit_delete-card" type="submit">Да</button>
       </form>
     </div>
   </section>
@@ -92,13 +93,13 @@
     <div class="popup__container">
       <h2 class="popup__title">Обновить аватар</h2>
       <button class="popup__close" type="button"></button>
-      <form class="popup__form popup__form_type_add-card" id="editAvatar" name="editAvatar" novalidate>
+      <form class="popup__form popup__form_type_edit-avatar" id="editAvatar" name="editAvatar" novalidate>
         <label class="popup__filed">
           <input type="url" class="popup__text-input popup__text-input_photo-link" name="avatar"
             placeholder="Ссылка на картинку" required id="avatar">
           <span class="popup__text-input-error avatar-error"></span>
         </label>
-        <button class="popup__save-edit" type="submit">Создать</button>
+        <button class="popup__save-edit" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
@@ -112,7 +113,7 @@
         <h2 class="element__title"></h2>
         <div class="element__like-container">
           <button type="button" class="element__like"></button>
-          <p class="element__like-count element__title"></p>
+          <p class="element__like-count"></p>
         </div>
       </div>
     </div>

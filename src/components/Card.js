@@ -43,11 +43,6 @@ export default class Card {
     return this._card;
   }
 
-  // //*Удаление карточки
-  // _handleDeleteButton = () => {
-  //   this._card.remove();
-  // };
-
   //*Кнопка лайка
   _handleLikeButton = () => {
     this._like.classList.toggle("element__like_active");
@@ -75,7 +70,7 @@ export default class Card {
     this._card = null;
   }
 
-  //* проверяем владельца карточки
+  //* для удаления своих карточек
   _hasDeleteBtn() {
     if (this._userId !== this._cardOwnerId) {
       this._delete.remove();
@@ -92,7 +87,6 @@ export default class Card {
     }
   }
 
-  //* изменение количества лайков
   handleLikeCard(data) {
     this._likes = data.likes;
     this._likesCount.textContent = this._likes.length;

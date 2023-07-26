@@ -3,13 +3,13 @@ import {
   formAddCard,
   author,
   aboutTheAuthor,
-  initialCards,
   validationConfig,
   cardListSelector,
   cardTemplateSelector,
   popupSelectorWhitImg,
   addCardButton,
   editProfileButton,
+  editAvatar,
 } from "../utils/constants.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
@@ -41,13 +41,14 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     console.log(`Ошибка: ${err}`);
   });
 
-//*UserInfo
+//*ИФНО ПОЛЬЗОВАТЕЛЯ
 const userInfo = new UserInfo({
   authorSelector: ".profile__author",
   aboutTheAuthorSelector: ".profile__about-the-author",
   avatarSelector: ".profile__avatar",
 });
 
+//*СОЗДАНИЕ КАРТОЧЕК
 function createCard(element) {
   const card = new Card({
     data: element,
@@ -190,6 +191,15 @@ editProfileButton.addEventListener("click", () => {
 //*АВАТАР
 
 const avatar = document.querySelector(".profile__avatar");
+const popupEditAvatarValidator = new FormValidator(
+  validationConfig,
+  editAvatar
+);
+popupEditAvatarValidator.enableValidation();
+
+avatar.addEventListener("click", () => {
+  popupEditAvatar.open();
+});
 
 //* Создание попапа редактирования аватара пользователя
 const popupEditAvatar = new PopupWithForm({
@@ -212,11 +222,7 @@ const popupEditAvatar = new PopupWithForm({
 });
 popupEditAvatar.setEventListeners();
 
-avatar.addEventListener("click", () => {
-  popupEditAvatar.open();
-});
-
-//*ОТРИСОВКА ЗАДАННЫХ КАРТОЧЕК "initialCards"
+//*ОТРИСОВКА ЗАДАННЫХ КАРТОЧЕК
 const section = new Section(
   {
     renderer: (element) => {
@@ -225,5 +231,3 @@ const section = new Section(
   },
   cardListSelector
 );
-
-// section.renderItems();
