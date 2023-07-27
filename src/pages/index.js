@@ -132,21 +132,6 @@ addCardButton.addEventListener("click", () => {
   popupAddImage.open();
 });
 
-//*ФУНКЦИЯ ДЛЯ КНОПКИ SUBMIT, ИСПОЛЬЗУЕТСЯ В ФОРМЕ "formAddCard", ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
-function handleAddFormSubmit(data) {
-  section.setItem(createCard(data));
-  popupAddImage.close();
-}
-
-//*ФУНКЦИЯ ДЛЯ КНОПКИ SUBMIT, ИСПОЛЬЗУЕТСЯ В ФОРМЕ "formEdit", РЕДАКТИРОВАНИЕ ПРОФИЛЯ ПОЛЬЗОВАТЕЛЯ
-function handleEditFormSubmit(data) {
-  userInfo.setUserInfo({
-    author: data["name"],
-    aboutTheAuthor: data["editAboutTheAuthor"],
-  });
-  popupEditProfile.close();
-}
-
 //*ПОДКЛЮЧЕНИЕ ВАЛИДАЦИИ, ФОРМА РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 const popupEditProfileValidator = new FormValidator(validationConfig, formEdit);
 popupEditProfileValidator.enableValidation();
@@ -209,7 +194,8 @@ const popupEditAvatar = new PopupWithForm({
     api
       .editAvatar(data)
       .then((data) => {
-        avatar.src = data.avatar;
+        userInfo.setUserInfo(data);
+
         popupEditAvatar.close();
       })
       .catch((err) => {
